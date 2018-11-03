@@ -21,10 +21,17 @@ RUN \
  && rm -fr ./drafter \
 ;
 
+RUN pip install apiary2postman
+
+RUN wget https://github.com/pixelfusion/blueman/releases/download/1.3.1/blueman.phar -O /usr/local/bin/blueman
+
 RUN \
-    pip install apiary2postman \
- && wget https://github.com/pixelfusion/blueman/releases/download/1.3.1/blueman.phar -O /usr/local/bin/blueman \
- && npm install -g --unsafe-perm aglio \
+    wget https://github.com/bukalapak/snowboard/releases/download/v1.7.0/snowboard-v1.7.0.linux-amd64.tar.gz -O snowboard.tar.gz \
+ && tar -zxvf snowboard.tar.gz \
+ && cp ./snowboard /usr/local/bin/snowboard \
+ && rm -f snowboard* \
 ;
+
+RUN npm install -g --unsafe-perm aglio
 
 RUN rm -fr ~/.cache/pip && npm cache clean -f
