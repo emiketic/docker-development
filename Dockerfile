@@ -14,7 +14,7 @@ RUN \
      && make test \
      && make drafter \
      && make install \
-     && cd .. ; \
+     && cd .. \
      && rm -fr ./drafter \
     ;
 
