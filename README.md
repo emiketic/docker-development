@@ -7,4 +7,6 @@ A Docker image for development.
 - [API Blueprint](https://apiblueprint.org/) tooling:
   - [drafter](https://github.com/apiaryio/drafter)
   - [apiary2postman](https://github.com/thecopy/apiary2postman)
+  - [blueman](https://github.com/pixelfusion/blueman)
+  - [aglio](https://github.com/danielgtaylor/aglio)
 - ...
