@@ -1,1 +1,3 @@
-FROM alpine:3.8
+FROM emiketic/essentials:lastet
+
+RUN apk add --no-cache --update python python-dev py-pip build-base
