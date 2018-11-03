@@ -6,24 +6,29 @@ RUN \
         python2 py2-pip \
         php7 \
         nodejs npm \
+        go \
  && pip install --upgrade pip \
  && npm -g install npm \
 ;
 
 RUN \
-    git clone --recursive git://github.com/apiaryio/drafter.git \
+    git clone git://github.com/apiaryio/drafter.git \
  && cd ./drafter \
+ && git checkout v0.1.9 \
+ && git submodule update --init --recursive \
  && ./configure \
- && make test \
- && make drafter \
+ && make \
  && make install \
  && cd .. \
  && rm -fr ./drafter \
 ;
 
-RUN pip install apiary2postman
+RUN \
+    wget https://github.com/pixelfusion/blueman/releases/download/1.3.1/blueman.phar -O /usr/local/bin/blueman \
+ && chmod u+x /usr/local/bin/blueman \
+;
 
-RUN wget https://github.com/pixelfusion/blueman/releases/download/1.3.1/blueman.phar -O /usr/local/bin/blueman
+RUN pip install apiary2postman
 
 RUN \
     wget https://github.com/bukalapak/snowboard/releases/download/v1.7.0/snowboard-v1.7.0.linux-amd64.tar.gz -O snowboard.tar.gz \
